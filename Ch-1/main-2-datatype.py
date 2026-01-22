@@ -22,3 +22,27 @@ print(type(name))
 t=True
 f=False
 print(t)
+
+
+# Type Conversion
+#Explicit
+var=10
+print(str(var))  
+
+print(float(var))
+print(int("20"))
+
+d="A"
+#!print(int(d)) #invalid  ,str To convert into interger or float string must be intger "28"
+
+
+b=12
+print(bool(b))
+print(bool("G")) 
+
+#it is based on truthy or falsely value
+#! false ,0,0.0 ,"",[],{},() all these give false value
+
+#Implicit
+a=10/3
+print(a)

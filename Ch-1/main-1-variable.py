@@ -1,3 +1,6 @@
+
+#?Python is a case-sensitive programming language. This means it treats uppercase and lowercase letters as distinct characters. 
+
 # print("Hello world") # single line comment
 
 """fdkfdsbbkdvkbdskbs

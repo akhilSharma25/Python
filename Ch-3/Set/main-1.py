@@ -34,4 +34,6 @@ intersect_set=A.intersection(B) # A&B
 print(intersect_set) 
 
 print(A.difference(B)) #A-B
+print(B.issubset(A))
+print(3 in B)
 

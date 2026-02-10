@@ -1,2 +1,1 @@
-print(Factory().a)
-# Factory().hello()
+    # now parent constructor works as child consrtuctor

@@ -1,1 +1,1 @@
-    # now parent constructor works as child consrtuctor
+F.__a="Dh"

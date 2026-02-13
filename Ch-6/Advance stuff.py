@@ -49,6 +49,24 @@ print(chars)
 
 #lambda use hota map filter 
 #? Map ,filter and zip 
+#Map-> it is usedd for applying a function to multiple items,It takes a list(or any sequence),perfrom some calcualtion on list and gives u new list
+
+a=[1,3,4,5]
+doubled=map(lambda i: i*2,a) # it return object so  u need convert into list
+print(list(doubled))
+
+#Filter -> filter out the stuff, takes a list/sequence and filters elements based on a condition
+# Returns a new filter object containing only elements where the function returns True ,it works on true or false condition
+
+def even(x):
+    if x%2==0:
+        return True
+    else:
+        return False
+
+a=[1,2,3,4,5,6,7,8,9]
+res=filter(even,a)# return obj
+print(list(res))
 
 
 

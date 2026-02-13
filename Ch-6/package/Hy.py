@@ -1,0 +1,2 @@
+def hyy():
+    print("Hyy")

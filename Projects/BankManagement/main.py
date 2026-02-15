@@ -66,7 +66,53 @@ class Bank:
 
     def depositMoney(self):
         accNumber=input("Please tell your account number :- ")
-        pin=int(input("Tell your Pin"))
+        pin=int(input("Tell your Pin :- "))
+
+        userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] # deep copy hogi ab
+        if userData==False:
+            print("Sorry no data found")
+        else:
+            amount=int(input("How much you want to deposit :- "))
+            if amount>10000 or amount<0:
+                print("SOrry the amount is too much you can deposit below 10000 and above 0")
+            else:
+                # print(userData)
+                userData[0]["balance"]+=amount
+                Bank.__update()
+                print("amount deposited successfully")
+
+    def withdrawMoney(self):
+        accNumber=input("Please tell your account number :- ")
+        pin=int(input("Tell your Pin :- "))
+
+        userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] # deep copy hogi ab
+        if userData==False:
+            print("Sorry no data found")
+        else:
+            amount=int(input("How much you want to withdraw :- "))
+            if userData[0]["balance"]<amount or amount<0:
+                print("Sorry! You dont have that much money")
+
+            else:
+                # print(userData)
+                userData[0]["balance"]-=amount
+                Bank.__update()
+                print("amount withdraw successfully")
+
+    def showDetails(self):
+        accNumber=input("Please tell your account number :- ")
+        pin=int(input("Tell your Pin :- "))
+
+        userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] # deep copy hogi ab
+        if userData==False:
+            print("Sorry no data found")
+        else:
+            print("Your information are\n")
+            for i in userData[0]:
+                print(f"{i} : {userData[0][i]}")
+
+
+
 
 
 
@@ -86,4 +132,8 @@ if check==1:
     user.Createaccount()
 if check==2:
     user.depositMoney()
+if check==3:
+    user.withdrawMoney()
+if check==4:
+    user.showDetails()
 

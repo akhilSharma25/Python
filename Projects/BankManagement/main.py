@@ -69,7 +69,7 @@ class Bank:
         pin=int(input("Tell your Pin :- "))
 
         userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] # deep copy hogi ab
-        if userData==False:
+        if not userData:
             print("Sorry no data found")
         else:
             amount=int(input("How much you want to deposit :- "))
@@ -86,7 +86,7 @@ class Bank:
         pin=int(input("Tell your Pin :- "))
 
         userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] # deep copy hogi ab
-        if userData==False:
+        if len(userData)==0:
             print("Sorry no data found")
         else:
             amount=int(input("How much you want to withdraw :- "))
@@ -104,12 +104,82 @@ class Bank:
         pin=int(input("Tell your Pin :- "))
 
         userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] # deep copy hogi ab
-        if userData==False:
+        if len(userData)==0:
             print("Sorry no data found")
         else:
             print("Your information are\n")
             for i in userData[0]:
                 print(f"{i} : {userData[0][i]}")
+
+    def updateDetails(self):
+         accNumber=input("Please tell your account number :- ")
+         pin=int(input("Tell your Pin :- "))
+
+         userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] 
+         if len(userData)==0:
+            print("Sorry no data found")
+         else:
+             print("You cannot change the age,account number,balance")
+             print("Fill the details for chanes or leave it empty if no change ")
+             newData={
+                 "name":input("Please tell your name or press enter :- "),
+                 "email":input("Please Tell ur new Email or press enter to skip:- "),
+                 "pin":input("Enter new Pin or press enter to skip:- ")
+             }
+
+             if newData["name"]=="":
+                 newData["name"]=userData[0]['name']
+
+             if newData["email"]=="":
+                 newData["email"]=userData[0]['email']
+
+             if newData["pin"]=="":
+                 newData["pin"]=userData[0]['pin']
+
+             if newData["name"]=="":
+                 newData["name"]=userData[0]['name']
+
+             newData['age']=userData[0]['age']
+             newData['accountNo']=userData[0]['accountNo']
+             newData['balance']=userData[0]['balance']
+
+             if type(newData['pin'])==str:
+                 newData['pin']=int(newData['pin'])
+             
+
+             for i in newData:
+                 if newData[i]==userData[0][i]:
+                     continue
+                 else:
+                     userData[0][i]=newData[i]
+            
+             Bank.__update()
+             print("Details updated successfully")
+
+    def Delete(self):
+            accNumber=input("Please tell your account number :- ")
+            pin=int(input("Tell your Pin :- "))
+
+            userData=[i for i in Bank.data if i['accountNo']==accNumber and i['pin']==pin] 
+            if len(userData)==0:
+                print("Sorry no data found")
+            else:
+                check=input("Press Y If you actually want to delete account or press n to skip:- ")
+
+                if check =='n' or check=="N":
+                    print("By pass")
+                    pass
+                else:
+                    print(userData)
+                    index=Bank.data.index(userData[0])
+                    
+                    Bank.data.pop(index)
+                    print("Account Deleted Successfully ")
+                    Bank.__update()
+
+
+         
+
 
 
 
@@ -136,4 +206,8 @@ if check==3:
     user.withdrawMoney()
 if check==4:
     user.showDetails()
+if check==5:
+    user.updateDetails()
+if check==6:
+    user.Delete()
 
